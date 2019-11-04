@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        applicationId "com.stimednp.kadesubmission1"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Anko Commons
+     implementation "org.jetbrains.anko:anko-commons:$anko_version"
+
+    // Coroutine listeners untuk Anko Layouts
+     implementation "org.jetbrains.anko:anko-sdk25-coroutines:$anko_version"
+     implementation "org.jetbrains.anko:anko-appcompat-v7-coroutines:$anko_version"
+
+    //anko
+    implementation "org.jetbrains.anko:anko-sdk25:$anko_version" // Anko Layouts
+    implementation "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+    implementation "org.jetbrains.anko:anko-recyclerview-v7:$anko_version" // RecyclerView-v7
+    implementation "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-cardview-v7:$anko_version" // CardView-v7
+    implementation "org.jetbrains.anko:anko-design:$anko_version" // Design
+    implementation "org.jetbrains.anko:anko-design-coroutines:$anko_version"
+    implementation "org.jetbrains.anko:anko-gridlayout-v7:$anko_version" // GridLayout-v7
+
+    //glide
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+}
