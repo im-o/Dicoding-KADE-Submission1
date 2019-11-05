@@ -1,4 +1,4 @@
-package com.stimednp.kadesubmission1
+package com.stimednp.kadesubmission1.adapter
 
 import android.content.Context
 import android.view.View
@@ -7,6 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.stimednp.kadesubmission1.R
+import com.stimednp.kadesubmission1.data.ItemLeagues
+import com.stimednp.kadesubmission1.ui.LeagueUI
 import org.jetbrains.anko.AnkoContext
 import org.jetbrains.anko.find
 
@@ -38,8 +41,12 @@ class LeagueAdapter(
         }
     }
 
-    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ): LeagueViewHolder {
-        return LeagueViewHolder(LeagueUI().createView(AnkoContext.create(parent.context, parent)))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
+        return LeagueViewHolder(
+            LeagueUI().createView(
+                AnkoContext.create(parent.context, parent)
+            )
+        )
     }
 
     override fun getItemCount(): Int {

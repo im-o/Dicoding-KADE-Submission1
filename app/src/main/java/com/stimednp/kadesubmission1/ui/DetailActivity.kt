@@ -1,4 +1,4 @@
-package com.stimednp.kadesubmission1
+package com.stimednp.kadesubmission1.ui
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -11,7 +11,9 @@ import com.bumptech.glide.Glide
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.LayoutParams.*
 import com.google.android.material.appbar.CollapsingToolbarLayout.LayoutParams.COLLAPSE_MODE_PIN
+import com.stimednp.kadesubmission1.R
 import com.stimednp.kadesubmission1.R.color.*
+import com.stimednp.kadesubmission1.data.ItemLeagues
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 import org.jetbrains.anko.design.collapsingToolbarLayout
@@ -40,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
     class DetailActivityUI(val items: ItemLeagues) : AnkoComponent<DetailActivity> {
         @SuppressLint("DefaultLocale")
         override fun createView(ui: AnkoContext<DetailActivity>) = with(ui) {
-            coordinatorLayout() {
+            coordinatorLayout {
                 fitsSystemWindows = true
                 lparams(matchParent, matchParent)
 
@@ -62,8 +64,10 @@ class DetailActivity : AppCompatActivity() {
 
                         toolbar {
                             id = R.id.toolbar_detail
-                            popupTheme = R.style.ThemeOverlay_AppCompat_Light
-                            navigationIcon = resources.getDrawable(R.drawable.ic_arrow_back_black_24dp)
+                            popupTheme =
+                                R.style.ThemeOverlay_AppCompat_Light
+                            navigationIcon =
+                                resources.getDrawable(R.drawable.ic_arrow_back_black_24dp)
                             setNavigationOnClickListener {
                                 longToast("back!!, solusi min, sudah bertapa tp gk mau2")
                             }
@@ -77,7 +81,7 @@ class DetailActivity : AppCompatActivity() {
                     }
                 }.lparams(matchParent, wrapContent)
                 nestedScrollView {
-                    relativeLayout() {
+                    relativeLayout {
                         cardView {
                             setCardBackgroundColor(getColor(context, colorAccent))
                             id = R.id.card_view
@@ -90,7 +94,7 @@ class DetailActivity : AppCompatActivity() {
                             centerHorizontally()
                         }
 
-                        textView() {
+                        textView {
                             id = R.id.liga_name
                             text = items.liga_name
                             textSize = 20f
@@ -110,7 +114,7 @@ class DetailActivity : AppCompatActivity() {
                             topMargin = dip(8)
                         }
 
-                        textView() {
+                        textView {
                             id = R.id.liga_desc
                             text = items.liga_desc
                             textSize = 12f

@@ -1,13 +1,12 @@
-package com.stimednp.kadesubmission1
+package com.stimednp.kadesubmission1.ui
 
-import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.drawable.GradientDrawable
 import android.text.TextUtils
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat.getColor
-import com.stimednp.kadesubmission1.R.color.colorAccent
+import com.stimednp.kadesubmission1.R
+import com.stimednp.kadesubmission1.R.color.*
 import org.jetbrains.anko.*
 import org.jetbrains.anko.cardview.v7.cardView
 
@@ -18,20 +17,15 @@ import org.jetbrains.anko.cardview.v7.cardView
 class LeagueUI : AnkoComponent<ViewGroup> {
     //ItemUI
     override fun createView(ui: AnkoContext<ViewGroup>) = with(ui) {
-        verticalLayout() {
+        verticalLayout {
             lparams(width = matchParent, height = wrapContent)
             cardView {
-                verticalLayout() {
+                verticalLayout {
                     lparams(matchParent, wrapContent)
                     padding = dip(8)
                     orientation = LinearLayout.VERTICAL
 
                     cardView {
-//                        background = GradientDrawable().apply {
-//                            shape = GradientDrawable.RECTANGLE
-//                            cornerRadius = 8f
-//                            setStroke(1, Color.MAGENTA)
-//                        }
                         setCardBackgroundColor(getColor(context, colorAccent))
                         imageView {
                             id = R.id.liga_img
