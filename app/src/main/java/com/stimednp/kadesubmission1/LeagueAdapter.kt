@@ -4,69 +4,41 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import org.jetbrains.anko.*
+import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.find
 
 /**
  * Created by rivaldy on 11/3/2019.
  */
 
-class LeagueAdapter(val context: Context, val items: List<ItemLeagues>) :
+class LeagueAdapter(
+    val context: Context,
+    val items: List<ItemLeagues>,
+    val listener: (ItemLeagues) -> Unit
+) :
     RecyclerView.Adapter<LeagueAdapter.LeagueViewHolder>() {
-    //layout UI
 
-    class LeagueUI : AnkoComponent<ViewGroup> {
-        override fun createView(ui: AnkoContext<ViewGroup>): View {
-            return with(ui) {
-                verticalLayout() {
-                    lparams(width = matchParent, height = wrapContent)
-                    padding = dip(16)
-                    orientation = LinearLayout.VERTICAL
+    class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        private val ligaName: TextView = view.find(R.id.liga_name)
+        private val ligaDesc: TextView = view.find(R.id.liga_desc)
+        private val ligaImg: ImageView = view.find(R.id.liga_img)
 
-                    imageView {
-                        id = R.id.liga_img
-                    }.lparams(width = dip(50), height = dip(50))
-
-                    textView {
-                        id = R.id.liga_name
-                        textSize = 16f
-                    }.lparams {
-                        width = matchParent
-                        margin = dip(16)
-                    }
-
-                    textView {
-                        id = R.id.liga_desc
-                        textSize = 16f
-                        maxLines = 3
-
-                    }.lparams {
-                        width = matchParent
-                        margin = dip(16)
-                    }
-                }
+        fun bindItem(itemLeagues: ItemLeagues, listener: (ItemLeagues) -> Unit) {
+            ligaName.text = itemLeagues.liga_name
+            ligaDesc.text = itemLeagues.liga_desc
+            Glide.with(itemView.context)
+                .load(itemLeagues.liga_img)
+                .into(ligaImg)
+            itemView.setOnClickListener {
+                listener(itemLeagues)
             }
         }
     }
 
-    class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val ligaImg: ImageView = view.find(R.id.liga_img)
-        private val ligaName: TextView = view.find(R.id.liga_name)
-        private val ligaDesc: TextView = view.find(R.id.liga_desc)
-
-        fun bindItem(itemLeagues: ItemLeagues) {
-            Glide.with(itemView.context)
-                .load(itemLeagues.liga_img)
-                .into(ligaImg)
-            ligaName.text = itemLeagues.liga_name
-            ligaDesc.text = itemLeagues.liga_desc
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
+    override fun onCreateViewHolder( parent: ViewGroup, viewType: Int ): LeagueViewHolder {
         return LeagueViewHolder(LeagueUI().createView(AnkoContext.create(parent.context, parent)))
     }
 
@@ -75,7 +47,7 @@ class LeagueAdapter(val context: Context, val items: List<ItemLeagues>) :
     }
 
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {
-        holder.bindItem(items[position])
+        holder.bindItem(items[position], listener)
     }
 
 }
