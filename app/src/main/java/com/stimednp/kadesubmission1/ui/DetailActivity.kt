@@ -31,6 +31,8 @@ class DetailActivity : AppCompatActivity() {
         setSupportActionBar(findOptional(R.id.toolbar_detail))
         val itemLeagues = intent.getParcelableExtra<ItemLeagues>(EXTRA_DATA)
         DetailActivityUI(itemLeagues!!).setContentView(this)
+//        val toolbar: Toolbar? = find(R.id.toolbar_detail)
+//        setSupportActionBar(DetailActivityUI(itemLeagues).setContentView(this).find(R.id.toolbar_detail))
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -64,10 +66,8 @@ class DetailActivity : AppCompatActivity() {
 
                         toolbar {
                             id = R.id.toolbar_detail
-                            popupTheme =
-                                R.style.ThemeOverlay_AppCompat_Light
-                            navigationIcon =
-                                resources.getDrawable(R.drawable.ic_arrow_back_black_24dp)
+                            popupTheme = R.style.ThemeOverlay_AppCompat_Light
+                            navigationIcon = resources.getDrawable(R.drawable.ic_arrow_back_black_24dp)
                             setNavigationOnClickListener {
                                 longToast("back!!, solusi min, sudah bertapa tp gk mau2")
                             }

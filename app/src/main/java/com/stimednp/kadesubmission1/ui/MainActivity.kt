@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                         lparams(matchParent, wrapContent)
                         layoutManager = LinearLayoutManager(context)
                         adapter =
-                            LeagueAdapter(context, items) {
+                            LeagueAdapter(items) {
                                 startActivity<DetailActivity>(DetailActivity.EXTRA_DATA to it)
                             }
                     }

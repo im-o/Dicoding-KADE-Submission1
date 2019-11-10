@@ -1,6 +1,5 @@
 package com.stimednp.kadesubmission1.adapter
 
-import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -17,13 +16,7 @@ import org.jetbrains.anko.find
  * Created by rivaldy on 11/3/2019.
  */
 
-class LeagueAdapter(
-    val context: Context,
-    val items: List<ItemLeagues>,
-    val listener: (ItemLeagues) -> Unit
-) :
-    RecyclerView.Adapter<LeagueAdapter.LeagueViewHolder>() {
-
+class LeagueAdapter(val items: List<ItemLeagues>, val listener: (ItemLeagues) -> Unit) : RecyclerView.Adapter<LeagueAdapter.LeagueViewHolder>() {
     class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val ligaName: TextView = view.find(R.id.liga_name)
         private val ligaDesc: TextView = view.find(R.id.liga_desc)
